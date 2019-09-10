@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">通知测试</string>
+    <string name="notify">通知</string>
+</resources>
