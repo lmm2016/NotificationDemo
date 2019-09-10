@@ -58,7 +58,9 @@ public class MainActivity extends AppCompatActivity {
             String groupId = "group_001";
             NotificationChannelGroup group = new NotificationChannelGroup(groupId, "广告");
             //创建group
-            notificationManager.createNotificationChannelGroup(group);
+            if(notificationManager != null) {
+                notificationManager.createNotificationChannelGroup(group);
+            }
             //channelId要唯一
             String channelId = "channel_001";
             NotificationChannel adChannel = new NotificationChannel(channelId,
@@ -68,7 +70,9 @@ public class MainActivity extends AppCompatActivity {
             //将渠道添加进组（先创建组才能添加）
             adChannel.setGroup(groupId);
             //创建channel
-            notificationManager.createNotificationChannel(adChannel);
+            if(notificationManager != null) {
+                notificationManager.createNotificationChannel(adChannel);
+            }
             //创建通知时，标记你的渠道id
             Notification notification = new Notification.Builder(MainActivity.this, channelId)
                     .setSmallIcon(R.mipmap.ic_launcher)
@@ -77,8 +81,9 @@ public class MainActivity extends AppCompatActivity {
                     .setContentText("这是一条测试消息")
                     .setAutoCancel(true)
                     .build();
-            notificationManager.notify(1, notification);
-
+            if(notificationManager != null) {
+                notificationManager.notify(1, notification);
+            }
         }
     }
 
